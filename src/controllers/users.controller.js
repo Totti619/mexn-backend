@@ -13,15 +13,15 @@ controller.getUser = async (req, res) => {
 }
 
 controller.createUser = async (req, res) => {
-    const { username } = req.body
-    const newUser = new User({ username })
+    const { name, password } = req.body
+    const newUser = new User({ name, password })
     await newUser.save()
     res.json({ message: "User created!" })
 }
 
 controller.updateUser = async (req, res) => {
-    const { username } = req.body
-    const user = await User.findByIdAndUpdate(req.params.id, { username })
+    const { name, password } = req.body
+    const user = await User.findByIdAndUpdate(req.params.id, { name, password })
     res.json({ message: "User updated!" })
 }
 
